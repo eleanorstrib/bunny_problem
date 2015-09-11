@@ -58,7 +58,14 @@ def answer(names):
 	# variable this name value, sum of letter values
 	# loop through each name in the list and assign a value  
 	print name_list, "this is the first name list"
-	return_this = sorted(name_list)
-	return name_list
+	name_list = sorted(name_list)
+	return_this = []
+	
+	for item in name_list:
+		return_this.append(item[1])
+
+	print return_this, "this is the sorted list of names"
+	return return_this
+
 
 answer(['aaa', 'bcb', 'cab', 'ccc'])
