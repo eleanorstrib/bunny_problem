@@ -44,7 +44,9 @@ def answer(names):
 		'c': 3
 	}
 
-	#create a list to put the names in in order of value
+	# create a dict to put the names in in order of value
+	# keys will be scores, values will be a list of names
+
 	name_list = []
 	
 	#loop through names in original list
@@ -54,18 +56,25 @@ def answer(names):
 		for letter in name:
 			sum_this_name = sum_this_name + alphabet[letter]
 		name_list.append((sum_this_name, name))
+ 
 
-	# variable this name value, sum of letter values
-	# loop through each name in the list and assign a value  
-	print name_list, "this is the first name list"
 	name_list = sorted(name_list)
+
 	return_this = []
 	
+	i=0
 	for item in name_list:
-		return_this.append(item[1])
+		if item[0] == name_list[i-1][0]:
+			temp = name_list[i-1][1]
+			print temp, "this is temp"
+			return_this[i-1] = item[1]
+			return_this.append(temp)
+		else:
+			return_this.append(item[1])
+		i +=1
 
 	print return_this, "this is the sorted list of names"
 	return return_this
 
 
-answer(['aaa', 'bcb', 'cab', 'ccc'])
+answer(['aaa', 'c', 'bcb', 'cab', 'ccc'])
