@@ -41,7 +41,30 @@ def answer(names):
 	alphabet = {
 		'a': 1,
 		'b': 2,
-		'c': 3
+		'c': 3,
+		'd': 4,
+		'e': 5,
+		'f': 6,
+		'g': 7,
+		'h': 8,
+		'i': 9,
+		'j': 10,
+		'k': 11,
+		'l': 12,
+		'm': 13,
+		'n': 14,
+		'o': 15,
+		'p': 16,
+		'q':17,
+		'r':18,
+		's':19,
+		't':20,
+		'u':21,
+		'v':22,
+		'w':23,
+		'x':24,
+		'y':25,
+		'z':26
 	}
 
 	# create a dict to put the names in in order of value
@@ -51,30 +74,22 @@ def answer(names):
 	
 	#loop through names in original list
 	for name in names:
+		name = name.lower()
 		sum_this_name = 0
 		#loop through letters of each name
 		for letter in name:
 			sum_this_name = sum_this_name + alphabet[letter]
 		name_list.append((sum_this_name, name))
  
-
-	name_list = sorted(name_list)
-
-	return_this = []
 	
-	i=0
-	for item in name_list:
-		if item[0] == name_list[i-1][0]:
-			temp = name_list[i-1][1]
-			print temp, "this is temp"
-			return_this[i-1] = item[1]
-			return_this.append(temp)
-		else:
-			return_this.append(item[1])
-		i +=1
+	name_list.sort(reverse=True)
+	
+	return_this=[]
 
-	print return_this, "this is the sorted list of names"
+	for item in name_list:
+		return_this.append(item[1])
+
+	print return_this
 	return return_this
 
-
-answer(['aaa', 'c', 'bcb', 'cab', 'ccc'])
+answer(["abcdefg", "vi"])
