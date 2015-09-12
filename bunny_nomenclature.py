@@ -38,6 +38,8 @@ Output:
 ['CJ', 'AL']
 """
 def answer(names):
+	# create a dictionary of letters of the alphabet as keys
+	# numeric value as values
 	alphabet = {
 		'a': 1,
 		'b': 2,
@@ -55,41 +57,46 @@ def answer(names):
 		'n': 14,
 		'o': 15,
 		'p': 16,
-		'q':17,
-		'r':18,
-		's':19,
-		't':20,
-		'u':21,
-		'v':22,
-		'w':23,
-		'x':24,
-		'y':25,
-		'z':26
+		'q': 17,
+		'r': 18,
+		's': 19,
+		't': 20,
+		'u': 21,
+		'v': 22,
+		'w': 23,
+		'x': 24,
+		'y': 25,
+		'z': 26
 	}
 
-	# create a dict to put the names in in order of value
-	# keys will be scores, values will be a list of names
-
+	# create a list that will hold all of the numeric values
+	# and actual names as tuples (e.g. (score, name))
 	name_list = []
 	
 	#loop through names in original list
 	for name in names:
-		name = name.lower()
-		sum_this_name = 0
-		#loop through letters of each name
+		#change to lower case so can be found in dict
+		name = name.lower() 
+		score = 0
+		#loop through letters of each name and increment the score
 		for letter in name:
-			sum_this_name = sum_this_name + alphabet[letter]
-		name_list.append((sum_this_name, name))
+			score = score + alphabet[letter]
+		name_list.append((score, name))
  
-	
+	# sort the list of names in reverse order
+	# Python will do this first by the scores,
+	# THEN by reverse alpha, which is what we want
 	name_list.sort(reverse=True)
 	
-	return_this=[]
+	# overwrite the original names list so we can return that
+	names = []
 
+	# loop through the list and append the second value in each
+	# tuple (the name) to the final list
 	for item in name_list:
-		return_this.append(item[1])
+		names.append(item[1])
 
-	print return_this
-	return return_this
+	print names
+	return names
 
-answer(["abcdefg", "vi"])
+answer(["annie", "bonnie", "liz"])
